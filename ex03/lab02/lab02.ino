@@ -1,0 +1,32 @@
+// 定义LED引脚，ESP32通常板载LED连接在GPIO 2
+const int ledPin = 2; 
+unsigned long previous =0;
+const long interval=3900;
+int s1=0,O=0,s2=0;
+unsigned long current=0;
+void setup() {
+  // 初始化串口通信，设置波特率为115200
+  Serial.begin(115200);
+  // 将LED引脚设置为输出模式
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+// SOS 示例思路
+// S: 短闪3次
+for(int i=0; i<3; i++) { digitalWrite(ledPin, HIGH); delay(200); digitalWrite(ledPin, LOW); delay(200); }
+delay(500); // 字母间隔
+// O: 长闪3次
+for(int i=0; i<3; i++) { digitalWrite(ledPin, HIGH); delay(600); digitalWrite(ledPin, LOW); delay(200); }
+delay(500);
+// S: 短闪3次
+for(int i=0; i<3; i++) { digitalWrite(ledPin, HIGH); delay(200); digitalWrite(ledPin, LOW); delay(200); }
+delay(2000); // 单词间隔
+/*  digitalWrite(ledPin, HIGH);  // 点亮LED
+  Serial.println("LED ON");    // 串口输出提示
+  delay(1000);                 // 保持1秒（1000毫秒）
+  
+  digitalWrite(ledPin, LOW);   // 熄灭LED
+  Serial.println("LED OFF");   // 串口输出提示
+  delay(1000);                 // 保持1秒*/
+}
