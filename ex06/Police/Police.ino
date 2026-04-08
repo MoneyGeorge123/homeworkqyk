@@ -17,7 +17,7 @@ void setup() {
 
 void loop() {
   // 逐渐变亮
-  for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){   
+  for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle=dutyCycle+3){   
     // 【新版用法】直接通过引脚号写入，不再需要指定通道
     ledcWrite(ledPin, dutyCycle);
     ledcWrite(LED_PIN,255-dutyCycle);   
@@ -25,7 +25,7 @@ void loop() {
   }
 
   // 逐渐变暗
-  for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
+  for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle=dutyCycle-3){
     ledcWrite(ledPin, dutyCycle);
     ledcWrite(LED_PIN,255-dutyCycle);   
     delay(10);
